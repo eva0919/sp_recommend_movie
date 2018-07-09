@@ -1,0 +1,40 @@
+{
+  "name": "movie_web_site",
+  "version": "1.0.0",
+  "description": "A side project of web site to recommend movie to user",
+  "main": "index.js",
+  "keywords": [
+    "react"
+  ],
+  "author": "Mikeva",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "@material-ui/core": "^1.3.1",
+    "axios": "^0.18.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "universal-cookie": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.5",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  }
+}
