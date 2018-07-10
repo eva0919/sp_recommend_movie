@@ -1,14 +1,15 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
-// import {connect} from "react-redux"; import {bindActionCreators} from
-// "redux"; import {getMovieList, getMovieLabel} from
-// "../../actions/dramas_actions";
+
 import "./recommend.css";
 
 const styles = {
   recommendList: {
     width: "500px",
     border: "1px solid #333"
+  },
+  recommendItem: {
+    margin: 5
   }
 }
 
@@ -17,10 +18,12 @@ class Dramas extends React.Component {
     super(props);
   }
   handleClick(value) {
-    console.log(value);
-    this
-      .props
-      .selectedMovie(value);
+    // console.log(value);
+    if (this.props.isLogin) {
+      this
+        .props
+        .selectedMovie(value);
+    }
   }
   render() {
     // console.log(this.props);
@@ -30,7 +33,10 @@ class Dramas extends React.Component {
     if (Object.keys(movie_label).length > 0) {
       nodes = recommend_list.map(map => {
         if (movie_label[map.ID]) {
-          return <Button onClick={this
+          return <Button
+            variant="outlined"
+            style={styles.recommendItem}
+            onClick={this
             .handleClick
             .bind(this, map)}>{movie_label[map.ID]}</Button>
         }
@@ -39,6 +45,7 @@ class Dramas extends React.Component {
     }
     return <div
       style={{
+      margin: 20,
       height: 500,
       overflowY: "scroll",
       marginTop: 50
@@ -53,6 +60,7 @@ class Dramas extends React.Component {
 Dramas.propTypes = {};
 
 Dramas.defaultProps = {
+  isLogin: false,
   recommend_list: [],
   movie_label: []
 };

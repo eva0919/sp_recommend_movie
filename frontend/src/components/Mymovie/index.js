@@ -9,14 +9,14 @@ class Mymovie extends React.Component {
             nodes = Object
                 .keys(my_movie_list)
                 .map(key => {
-                    return <div >{movie_label[key]}
-                        : {my_movie_list[key]}</div>
+                    return <div >{movie_label[key]} {"("}
+                        {my_movie_list[key]}
+                        {")"}</div>
                 })
         }
-        let title = "";
-        if (nodes && nodes.length > 0) {
-            title = "My Rated Movies"
-        }
+        const title = this.props.isLogin
+            ? "My Rated Movies"
+            : ""
         return (
             <div
                 style={{
@@ -32,6 +32,7 @@ class Mymovie extends React.Component {
 }
 
 Mymovie.defaultProps = {
+    isLogin: false,
     my_movie_list: {
         recommend_list: [],
         my_movie_list: [],

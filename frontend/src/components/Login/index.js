@@ -1,5 +1,5 @@
 import React from "react";
-
+import Button from '@material-ui/core/Button';
 // import {connect} from "react-redux"; import {bindActionCreators} from
 // "redux"; import {getMovieList, getMovieLabel} from
 // "../../actions/dramas_actions"; import "./dramas.css";
@@ -15,6 +15,9 @@ class Login extends React.Component {
         }
         this.loginHandler = this
             .loginHandler
+            .bind(this);
+        this.signupHandler = this
+            .signupHandler
             .bind(this);
         this.handleEmailChange = this
             .handleEmailChange
@@ -44,6 +47,10 @@ class Login extends React.Component {
             this
                 .props
                 .loginAction({email: this.state.email, password: this.state.password})
+        } else if (this.state.submitType === "signup") {
+            this
+                .props
+                .signupAction({email: this.state.email, password: this.state.password})
         }
         this.setState({open: false, submitType: ""})
         event.preventDefault();
@@ -73,9 +80,9 @@ class Login extends React.Component {
         return <div style={{
             float: "right"
         }}>
-            <button onClick={this.loginHandler}>Login</button>
+            <Button color="primary" onClick={this.loginHandler}>Login</Button>
             {"/"}
-            <button onClick={this.signupHandler}>Sign Up</button>
+            <Button onClick={this.signupHandler}>Sign Up</Button>
             {loginComponent}
         </div>
     }

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Button from '@material-ui/core/Button';
 // import {connect} from "react-redux"; import {bindActionCreators} from
 // "redux"; import {getMovieList, getMovieLabel} from
 // "../../actions/dramas_actions"; import "./dramas.css";
@@ -22,7 +22,7 @@ class Logout extends React.Component {
         return <div style={{
             float: "right"
         }}>
-            <button onClick={this.logout}>Logout</button>
+            <Button color="secondary" onClick={this.logout}>Logout</Button>
         </div>
     }
 }

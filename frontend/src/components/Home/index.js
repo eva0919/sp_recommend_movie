@@ -67,20 +67,21 @@ class Home extends React.Component {
             .login(data, this.props.actions.getMovieList)
     }
     render() {
-        // console.log(this.props);
-        const cookies = new Cookies();
-        const SessionComponent = typeof cookies.get('session') === "undefined"
-            ? (<Login
+        // console.log(this.props); const cookies = new Cookies();
+        const SessionComponent = this.props.system_data.isLogin
+            ? (<Logout logoutAction={this.callbackLogout}/>)
+            : (<Login
                 loginAction={this.callbackLogin}
-                signupAction={this.props.actions.signup}/>)
-            : (<Logout logoutAction={this.callbackLogout}/>);
+                signupAction={this.props.actions.signup}/>);
         return (
             <div>
                 {SessionComponent}
                 <Mymovie
+                    isLogin={this.props.system_data.isLogin}
                     my_movie_list={this.props.page_data.my_movie_list}
                     movie_label={this.props.page_data.movie_label}/>
                 <Recommend
+                    isLogin={this.props.system_data.isLogin}
                     recommend_list={this
                     .props
                     .page_data
@@ -103,7 +104,9 @@ Home.propTypes = {};
 
 Home.defaultProps = {
     page_data: {},
-    system_data: {}
+    system_data: {
+        isLogin: false
+    }
 };
 
 function mapStateToProps(state) {

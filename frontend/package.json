@@ -9,7 +9,8 @@
   "author": "Mikeva",
   "license": "ISC",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "build-test": "webpack --devtool source-map"
   },
   "dependencies": {
     "@material-ui/core": "^1.3.1",

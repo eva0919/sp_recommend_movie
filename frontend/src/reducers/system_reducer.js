@@ -3,24 +3,29 @@ import {
     LOGOUT,
     SIGNUP
 } from "../actions/types";
+import Cookies from "universal-cookie";
 
-export default function dramasReducer(
+const cookies = new Cookies();
+
+export default function systemReducer(
     state = {
-        session: ""
+        isLogin: typeof cookies.get('session') === "undefined" ? false : true
     },
     action
 ) {
     switch (action.type) {
         case LOGIN:
             return { ...state,
-                session: action.payload.session
+                isLogin: true
             };
         case LOGOUT:
             return { ...state,
-                session: ""
+                isLogin: false
             };
         case SIGNUP:
-            return state;
+            return { ...state,
+                isLogin: true
+            };
         default:
             return state;
     }

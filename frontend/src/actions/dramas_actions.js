@@ -26,14 +26,18 @@ export function signup(data) {
   const requestConfig = {
     method: "POST",
     url: `/api/signup`,
-    params: {
+    data: {
       email: data.email,
       password: data.password
     }
   }
   return function _(dispatch) {
     axios(requestConfig).then(response => {
-        const result = response.data.data;
+        const result = response.data;
+        const cookies = new Cookies();
+        cookies.set('session', result.session, {
+          path: '/'
+        });
         dispatch({
           type: Types.SIGNUP,
           payload: result
